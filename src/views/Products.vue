@@ -36,6 +36,7 @@
                 <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Nome</th>
                 <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Descrição</th>
                 <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">Preço</th>
+                <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">Status</th>
                 <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">ver</th>
               </tr>
               </thead>
@@ -48,6 +49,11 @@
                 <td class="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-800">{{ produto.name }}</td>
                 <td class="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-800">{{ produto.description }}</td>
                 <td class="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-800">R$ {{ produto.price }}</td>
+                <td
+                    class="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-800 ">
+                  <p :class="statusBg(produto.status)" class="border rounded text-white p-2">
+                    {{ produto.status ? 'Ativo' : 'Inativo' }} </p>
+                </td>
                 <td class="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-800">
                   <button @click="findProductSearch(produto.id)"
                           class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -110,6 +116,10 @@ const produtos = ref<ProductEntity[]>([]);
 const carregando = ref(true);
 const busca = ref<string>('');
 const message = ref<string>('');
+
+const statusBg = (status: number) => {
+  return status ? 'bg-green-500' : 'bg-red-500'
+}
 
 const showModal = ref<boolean>(false);
 const productFind = ref<ProductEntity | null>(null);
