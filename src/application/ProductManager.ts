@@ -1,4 +1,4 @@
-import {HttpProductService} from "@/infrastructure/services/HttpProductService.1";
+import {HttpProductService} from "@/infrastructure/services/HttpProductService";
 import type {ProductEntity} from "@/domain/product/entity/productEntity";
 
 

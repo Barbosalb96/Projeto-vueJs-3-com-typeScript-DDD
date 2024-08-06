@@ -60,11 +60,10 @@
 import {ProductManager} from "@/application/ProductManager";
 import {onMounted, ref, computed} from "vue";
 import type {ProductEntity} from "@/domain/product/entity/productEntity";
-import {HttpProductService} from "@/infrastructure/services/HttpProductService.1";
+import {HttpProductService} from "@/infrastructure/services/HttpProductService";
 import Alert from "@/components/alert.vue";
 
-const httpProductService = new HttpProductService();
-const productManager = new ProductManager(httpProductService);
+const productManager = new ProductManager(new HttpProductService());
 
 const produtos = ref<ProductEntity[]>([]);
 const carregando = ref(true);

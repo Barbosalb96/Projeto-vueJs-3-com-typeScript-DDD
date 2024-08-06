@@ -1,5 +1,5 @@
 import axios from "axios";
-import type {ProductService} from "@/domain/product/Service/ProductService";
+import type {ProductService} from "@/domain/product/service/ProductService";
 import type {ProductEntity} from "@/domain/product/entity/productEntity";
 
 export class HttpProductService implements ProductService {
